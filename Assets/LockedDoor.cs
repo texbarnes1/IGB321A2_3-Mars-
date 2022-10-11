@@ -35,7 +35,7 @@ public class LockedDoor : MonoBehaviour
 
     public void Close() // closes the door
     {
-        doorAnimation.Play("Close");
+        doorAnimation.SetFloat("DoorState", 0);
         isOpen = false;
         timeOpen = 0;
     }
@@ -43,7 +43,8 @@ public class LockedDoor : MonoBehaviour
 
     public void Open() // opens the door
     {
-        doorAnimation.Play("Open");
+        //print("beans");
+        doorAnimation.SetFloat("DoorState", 1);
         isOpen = true;
     }
 
@@ -63,7 +64,7 @@ public class LockedDoor : MonoBehaviour
 
         }
     }
-    void OnTrigger(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
         {

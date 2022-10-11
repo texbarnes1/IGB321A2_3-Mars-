@@ -10500,7 +10500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: 0
-  openDuration: 1
+  openDuration: 0.2
   isOpen: 0
   doorAnimation: {fileID: 3684062430874692839}
 --- !u!95 &3684062430874692839
