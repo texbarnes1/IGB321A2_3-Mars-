@@ -26,6 +26,8 @@ public class PlayerAvatar : MonoBehaviour {
     private float FTFireTimer;
     public int fuel = 50;
 
+    public int keyCards = 0;
+
     //Weapon Effects
     public GameObject muzzleFlash;
     public GameObject flameStream;

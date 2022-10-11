@@ -10,6 +10,7 @@ public class GUI : MonoBehaviour {
     public Slider healthbar;
     public Text ammoText;
     public Text fuelText;
+    public Text keyText;
     public GameObject levelCompleteText;
 
 	// Use this for initialization
@@ -28,6 +29,7 @@ public class GUI : MonoBehaviour {
             healthbar.value = player.GetComponent<PlayerAvatar>().health;
             ammoText.text = "Ammo: " + player.GetComponent<PlayerAvatar>().ammo.ToString();
             fuelText.text = "Fuel: " + player.GetComponent<PlayerAvatar>().fuel.ToString();
+            keyText.text = "Key Cards: " + player.GetComponent<PlayerAvatar>().keyCards.ToString();
         }
 
 

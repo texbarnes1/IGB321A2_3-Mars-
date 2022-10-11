@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\RotateObject.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\IsometricCamera.cs" />
     <Compile Include="Assets\Scripts\GUI.cs" />
@@ -76,6 +77,8 @@
     <Compile Include="Assets\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\LookAtMouse.cs" />
     <Compile Include="Assets\Scripts\Ammo.cs" />
+    <Compile Include="Assets\LockedDoor.cs" />
+    <Compile Include="Assets\KeyPickup.cs" />
     <Compile Include="Assets\Effects\ParticlePack\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
