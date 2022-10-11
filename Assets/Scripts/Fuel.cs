@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fuel : Pickup {
+public class Fuel : MonoBehaviour
+{
 
     public int fuel = 15;
 
-    public override void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter(Collider other)
+    {
 
-        if (other.tag == "Player") {
+        if (other.tag == "Player")
+        {
             other.transform.GetComponent<PlayerAvatar>().fuel += fuel;
 
             if (other.transform.GetComponent<PlayerAvatar>().fuel > 50)

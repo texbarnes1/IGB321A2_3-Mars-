@@ -32,6 +32,9 @@ public class Enemy : MonoBehaviour {
     public GameObject burning;
     public GameObject explosion;
 
+    //Turn off firing for tutorial purposes
+    public bool armed = true;
+
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
@@ -79,7 +82,7 @@ public class Enemy : MonoBehaviour {
                     }
 
                     //Fire Laser
-                    if (Time.time > laserTimer) {
+                    if (Time.time > laserTimer && armed) {
                         Instantiate(laser, laserMuzzle.transform.position, laserMuzzle.transform.rotation);
                         laserTimer = Time.time + laserTime;
                     }
