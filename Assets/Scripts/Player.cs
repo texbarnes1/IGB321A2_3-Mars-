@@ -16,11 +16,6 @@ public class Player : MonoBehaviour {
     private float fireTime = 0.5f;
     public GameObject fireLocation;
 
-    public float OxygenRemaining;
-    [SerializeField] private float oxygenMax = 100f;
-    private bool isLosingOxygen = false;
-    [SerializeField] private float oxygenLossRate = 0.1f;
-
 	// Use this for initialization
 	void Start () {
 
@@ -39,11 +34,6 @@ public class Player : MonoBehaviour {
         //Basic Player Weapon - Right Mouse Button
         if (Input.GetMouseButton(1))
             FireProjectile();
-
-        if (isLosingOxygen)
-        {
-            OxygenRemaining -= oxygenLossRate * Time.deltaTime;
-        }
 
         agent.SetDestination(moveTo);
     }
@@ -104,10 +94,6 @@ public class Player : MonoBehaviour {
         if(other.tag == "Goal") {
             GameManager.instance.levelComplete = true;
             StartCoroutine(GameManager.instance.LoadLevel(GameManager.instance.nextLevel));
-        }
-        else if (other.CompareTag("Oxygen"))
-        {
-
         }
     }
 }
