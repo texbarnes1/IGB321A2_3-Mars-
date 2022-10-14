@@ -26,6 +26,12 @@ public class PlayerAvatar : MonoBehaviour {
     private float FTFireTimer;
     public int fuel = 50;
 
+    //AddedMechanics
+    public int randomJamMin;
+    public int randomJamMax;
+    private int bulletsUntilJam;
+    private bool isJammed;
+    public float jamTime;
     public int keyCards = 0;
 
     //Weapon Effects
@@ -37,6 +43,8 @@ public class PlayerAvatar : MonoBehaviour {
         anim = avatar.GetComponent<Animator>();
         flameStream.GetComponent<ParticleSystem>().Stop();
         rb = GetComponent<Rigidbody>();
+
+        RandomInt(bulletsUntilJam);
     }
 	
 	// Update is called once per frame
@@ -50,12 +58,13 @@ public class PlayerAvatar : MonoBehaviour {
 
     void Shooting() {
         //Left Mouse Button
-        if (Input.GetMouseButton(0) && ammo >= 1) {
+        if (Input.GetMouseButton(0) && ammo >= 1 && isJammed != true) {
 
             muzzleFlash.SetActive(true);
 
             if (Time.time > MGFireTimer) {
                 Instantiate(bullet, muzzleFlash.transform.position, transform.rotation);
+                bulletsUntilJam -= 1;
                 ammo -= 1;
                 MGFireTimer = Time.time + MGFireTime;
             }
@@ -66,6 +75,14 @@ public class PlayerAvatar : MonoBehaviour {
             muzzleFlash.SetActive(false);
             anim.SetBool("Shooting", false);
         }
+
+        if (bulletsUntilJam <= 0)
+        {
+            isJammed = true;
+        }
+
+        if (isJammed == true)
+            WeaponJam();
 
         //Right Mouse Button
         if (Input.GetMouseButtonDown(1) && fuel >= 1) {
@@ -172,6 +189,25 @@ public class PlayerAvatar : MonoBehaviour {
             anim.SetBool("Strafe L", false);
             GameManager.instance.playerDead = true;
             rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
+    
+    int RandomInt(int number)
+    {
+        int RandomNumber = Random.Range(randomJamMin, randomJamMax);
+        return RandomNumber;
+    }
+
+    void WeaponJam()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            jamTime -= 1 * Time.deltaTime;
+        }
+
+        if (jamTime <= 0)
+        {
+            isJammed = false;
         }
     }
 
