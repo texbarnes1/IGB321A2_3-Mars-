@@ -29,8 +29,8 @@ public class PlayerAvatar : MonoBehaviour {
     //AddedMechanics
     public int randomJamMin;
     public int randomJamMax;
-    private int bulletsUntilJam;
-    private bool isJammed;
+    public int bulletsUntilJam;
+    public bool isJammed = false;
     public float jamTime;
     public int keyCards = 0;
 
@@ -44,7 +44,7 @@ public class PlayerAvatar : MonoBehaviour {
         flameStream.GetComponent<ParticleSystem>().Stop();
         rb = GetComponent<Rigidbody>();
 
-        RandomInt(bulletsUntilJam);
+        bulletsUntilJam = RandomInt();
     }
 	
 	// Update is called once per frame
@@ -58,7 +58,7 @@ public class PlayerAvatar : MonoBehaviour {
 
     void Shooting() {
         //Left Mouse Button
-        if (Input.GetMouseButton(0) && ammo >= 1 && isJammed != true) {
+        if (Input.GetMouseButton(0) && ammo >= 1 && isJammed == false) {
 
             muzzleFlash.SetActive(true);
 
@@ -76,13 +76,16 @@ public class PlayerAvatar : MonoBehaviour {
             anim.SetBool("Shooting", false);
         }
 
-        if (bulletsUntilJam <= 0)
+        if (isJammed == true)
+            WeaponJam();
+
+        if (bulletsUntilJam == 0 && isJammed == false)
         {
+            //Debug.Log("this Triggered");
             isJammed = true;
         }
 
-        if (isJammed == true)
-            WeaponJam();
+
 
         //Right Mouse Button
         if (Input.GetMouseButtonDown(1) && fuel >= 1) {
@@ -192,23 +195,30 @@ public class PlayerAvatar : MonoBehaviour {
         }
     }
     
-    int RandomInt(int number)
+    int RandomInt()
     {
         int RandomNumber = Random.Range(randomJamMin, randomJamMax);
+        //int RandomNumber = Random.RandomRange();
+
         return RandomNumber;
     }
 
     void WeaponJam()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (jamTime <= 0)
+        {
+            Debug.Log("this Triggered");
+            isJammed = false;
+            bulletsUntilJam = RandomInt();
+            jamTime = 2;
+        }
+
+
+        if (Input.GetMouseButton(0) && isJammed == true)
         {
             jamTime -= 1 * Time.deltaTime;
         }
 
-        if (jamTime <= 0)
-        {
-            isJammed = false;
-        }
     }
 
     //End of Level Goal Interaction
