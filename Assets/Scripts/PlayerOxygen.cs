@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class PlayerOxygen : MonoBehaviour
 {
-    private float OxygenRemaining;
+    private float oxygenRemaining;
+    public float OxygenRemaining { get { return oxygenRemaining; } }
     [SerializeField] private float oxygenMax = 100f;
     private bool isLosingOxygen = false;
     [SerializeField] private float oxygenLossRate = 5f;
 
     private void Start()
     {
-        OxygenRemaining = oxygenMax;
+        oxygenRemaining = oxygenMax;
     }
 
     private void Update()
     {
         if (isLosingOxygen)
         {
-            OxygenRemaining -= oxygenLossRate * Time.deltaTime;
-            Debug.Log(OxygenRemaining, this);
-            if (OxygenRemaining <= 0)
+            oxygenRemaining -= oxygenLossRate * Time.deltaTime;
+            Debug.Log(oxygenRemaining, this);
+            if (oxygenRemaining <= 0)
             {
                 Debug.Log("Ran out of oxygen", this);
             }

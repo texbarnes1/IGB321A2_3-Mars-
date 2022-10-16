@@ -11,6 +11,7 @@ public class GUI : MonoBehaviour {
     public Text ammoText;
     public Text fuelText;
     public Text keyText;
+    public Text oxygenText;
     public GameObject levelCompleteText;
 
 	// Use this for initialization
@@ -30,6 +31,7 @@ public class GUI : MonoBehaviour {
             ammoText.text = "Ammo: " + player.GetComponent<PlayerAvatar>().ammo.ToString();
             fuelText.text = "Fuel: " + player.GetComponent<PlayerAvatar>().fuel.ToString();
             keyText.text = "Key Cards: " + player.GetComponent<PlayerAvatar>().keyCards.ToString();
+            oxygenText.text = "Oxygen: " + player.GetComponent<PlayerOxygen>().OxygenRemaining.ToString() +"%";
         }
 
 
