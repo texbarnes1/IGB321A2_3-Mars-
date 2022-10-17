@@ -34,9 +34,14 @@ public class PlayerAvatar : MonoBehaviour {
     public float jamTime;
     public int keyCards = 0;
 
+    // A UI popup that indicates the weapon has jammed
+    public GameObject jamIndicator;
+
     //Weapon Effects
     public GameObject muzzleFlash;
     public GameObject flameStream;
+
+
 
     // Use this for initialization
     void Start () {
@@ -65,7 +70,7 @@ public class PlayerAvatar : MonoBehaviour {
             if (Time.time > MGFireTimer) {
                 Instantiate(bullet, muzzleFlash.transform.position, transform.rotation);
                 bulletsUntilJam -= 1;
-                ammo -= 1;
+                //ammo -= 1;
                 MGFireTimer = Time.time + MGFireTime;
             }
 
@@ -77,7 +82,10 @@ public class PlayerAvatar : MonoBehaviour {
         }
 
         if (isJammed == true)
+        {
             WeaponJam();
+        }
+            
 
         if (bulletsUntilJam == 0 && isJammed == false)
         {
@@ -205,18 +213,20 @@ public class PlayerAvatar : MonoBehaviour {
 
     void WeaponJam()
     {
+        jamIndicator.SetActive(true);
         if (jamTime <= 0)
         {
-            Debug.Log("this Triggered");
+            //Debug.Log("this Triggered");
             isJammed = false;
             bulletsUntilJam = RandomInt();
-            jamTime = 2;
+            jamTime = 4;
+            jamIndicator.SetActive(false);
         }
 
 
-        if (Input.GetMouseButton(0) && isJammed == true)
+        if (isJammed == true) // Input.GetMouseButton(0) &&
         {
-            jamTime -= 1 * Time.deltaTime;
+            jamTime -= Time.deltaTime;
         }
 
     }

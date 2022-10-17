@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerOxygen : MonoBehaviour
 {
-    private float oxygenRemaining;
+    public float oxygenRemaining = 100;
+
     public float OxygenRemaining { get { return oxygenRemaining; } }
     [SerializeField] private float oxygenMax = 100f;
     private bool isLosingOxygen = false;
@@ -20,12 +21,13 @@ public class PlayerOxygen : MonoBehaviour
         if (isLosingOxygen)
         {
             oxygenRemaining -= oxygenLossRate * Time.deltaTime;
-            Debug.Log(oxygenRemaining, this);
+            //Debug.Log(oxygenRemaining, this);
             if (oxygenRemaining <= 0)
             {
-                Debug.Log("Ran out of oxygen", this);
+                //Debug.Log("Ran out of oxygen", this);
             }
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
