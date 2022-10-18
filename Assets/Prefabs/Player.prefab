@@ -80,10 +80,13 @@ MonoBehaviour:
   fireDamage: {fileID: 576544407264912841, guid: f21a5f4e0dc322b409ef14f28fc56751,
     type: 3}
   fuel: 50
-  randomJamMin: 0
-  randomJamMax: 0
+  randomJamMin: 150
+  randomJamMax: 250
+  bulletsUntilJam: 0
+  isJammed: 0
   jamTime: 0
   keyCards: 0
+  jamIndicator: {fileID: 0}
   muzzleFlash: {fileID: 6042069127323229149}
   flameStream: {fileID: 5123256928176653037}
 --- !u!114 &1581058942458934652
@@ -98,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 120b45f26bb1f2841900758a218b1995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oxygenRemaining: 100
   oxygenMax: 100
   oxygenLossRate: 5
 --- !u!114 &5124662655992260324
@@ -382,6 +386,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1bc6a044d60d54045a094d1a59449d02, type: 2}
+    - target: {fileID: 3301133806531089039, guid: 6b9bfb73d6796d3428598337f0d0aa6e,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9bfb73d6796d3428598337f0d0aa6e, type: 3}
 --- !u!4 &5124662656624007092 stripped
