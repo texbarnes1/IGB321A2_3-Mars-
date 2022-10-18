@@ -11,6 +11,7 @@ public class PlayerOxygen : MonoBehaviour
     private bool isLosingOxygen = false;
     [SerializeField] private float oxygenLossRate = 5f;
 
+    public float oxygenRefreshRate = 10f;
     private void Start()
     {
         oxygenRemaining = oxygenMax;
@@ -20,13 +21,22 @@ public class PlayerOxygen : MonoBehaviour
     {
         if (isLosingOxygen)
         {
-            oxygenRemaining -= oxygenLossRate * Time.deltaTime;
+            
             //Debug.Log(oxygenRemaining, this);
             if (oxygenRemaining <= 0)
             {
                 //Debug.Log("Ran out of oxygen", this);
             }
+            else
+            {
+                oxygenRemaining -= oxygenLossRate * Time.deltaTime;
+            }
         }
+        else if(oxygenRemaining <= oxygenMax)
+        {
+            oxygenRemaining += oxygenRefreshRate * Time.deltaTime;
+        }
+
         
     }
 
@@ -36,13 +46,17 @@ public class PlayerOxygen : MonoBehaviour
         {
             isLosingOxygen = true;
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("OxygenFree"))
+        else if (other.CompareTag("Airlock"))
         {
             isLosingOxygen = false;
         }
     }
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("OxygenFree"))
+    //    {
+    //        isLosingOxygen = false;
+    //    }
+    //}
 }

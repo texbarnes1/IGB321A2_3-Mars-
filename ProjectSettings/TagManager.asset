@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Goal
   - OxygenFree
+  - Airlock
   layers:
   - Default
   - TransparentFX
