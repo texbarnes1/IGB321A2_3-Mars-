@@ -8,6 +8,8 @@ public class RotateObject : MonoBehaviour
     public float bobSpeed;
     public float bobHeight;
 
+    public GameObject lights;
+
     private float verticalTarget;
     // Start is called before the first frame update
     void Start()
@@ -27,5 +29,14 @@ public class RotateObject : MonoBehaviour
         transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.up * bobHeight, bobSpeed * Time.deltaTime);
 
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.tag == "Player")
+        {
+            lights.SetActive(false);
+        }
     }
 }
