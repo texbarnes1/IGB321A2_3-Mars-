@@ -8,13 +8,16 @@ public class PlayerOxygen : MonoBehaviour
 
     public float OxygenRemaining { get { return oxygenRemaining; } }
     [SerializeField] private float oxygenMax = 100f;
-    private bool isLosingOxygen = false;
+    public bool isLosingOxygen = false;
     [SerializeField] private float oxygenLossRate = 5f;
 
     public float oxygenRefreshRate = 10f;
+    public float damageOverTime = 2;
+    public PlayerAvatar player;
     private void Start()
     {
         oxygenRemaining = oxygenMax;
+        player = gameObject.GetComponent<PlayerAvatar>();
     }
 
     private void Update()
@@ -25,6 +28,8 @@ public class PlayerOxygen : MonoBehaviour
             //Debug.Log(oxygenRemaining, this);
             if (oxygenRemaining <= 0)
             {
+                oxygenRemaining = 0;
+                player.takeDamage(damageOverTime * Time.deltaTime);
                 //Debug.Log("Ran out of oxygen", this);
             }
             else
@@ -32,9 +37,17 @@ public class PlayerOxygen : MonoBehaviour
                 oxygenRemaining -= oxygenLossRate * Time.deltaTime;
             }
         }
-        else if(oxygenRemaining <= oxygenMax)
+        else 
         {
-            oxygenRemaining += oxygenRefreshRate * Time.deltaTime;
+            if (oxygenRemaining < oxygenMax)
+            {
+                oxygenRemaining += oxygenRefreshRate * Time.deltaTime;
+            }
+            else
+            {
+                oxygenRemaining = oxygenMax;
+            }
+                
         }
 
         

@@ -24,6 +24,7 @@ public class RailCar : MonoBehaviour
         {
             other.gameObject.SetActive(false);
             anim.Play();
+            GameManager.instance.levelComplete = true;
         }
     }
 }

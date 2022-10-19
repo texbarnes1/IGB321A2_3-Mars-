@@ -8037,7 +8037,7 @@ PrefabInstance:
     - target: {fileID: 3324947158499274086, guid: 08e865c706bd263488464593b1255ac2,
         type: 3}
       propertyPath: m_NavMeshLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3324947158499274092, guid: 08e865c706bd263488464593b1255ac2,
         type: 3}
@@ -8987,7 +8987,7 @@ PrefabInstance:
     - target: {fileID: 3324947158499274086, guid: 08e865c706bd263488464593b1255ac2,
         type: 3}
       propertyPath: m_NavMeshLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3324947158499274092, guid: 08e865c706bd263488464593b1255ac2,
         type: 3}

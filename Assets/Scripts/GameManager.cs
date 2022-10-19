@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
 
     public bool levelComplete = false;
 
-    string thisLevel;
+    public string thisLevel;
     public string nextLevel;
 
 
@@ -43,9 +43,10 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator LoadLevel(string level) {
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
 
         SceneManager.LoadScene(level);
+        print(level);
     }
 
 

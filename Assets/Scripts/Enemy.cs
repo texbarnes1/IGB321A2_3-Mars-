@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour {
     public GameObject laser;
     public GameObject laserMuzzle;
     private float laserTimer;
-    private float laserTime = 1.0f;
+    public float laserTime = 1.0f;
 
     //Collision Damage
     private float damageTimer;

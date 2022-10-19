@@ -104,6 +104,9 @@ MonoBehaviour:
   oxygenRemaining: 100
   oxygenMax: 100
   oxygenLossRate: 5
+  oxygenRefreshRate: 10
+  damageOverTime: 2
+  player: {fileID: 5124662655992260325}
 --- !u!114 &5124662655992260324
 MonoBehaviour:
   m_ObjectHideFlags: 0
