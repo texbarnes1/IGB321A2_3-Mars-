@@ -12,6 +12,8 @@ TagManager:
   - Goal
   - OxygenFree
   - Airlock
+  - PowerAbleLight
+  - NonePowerLight
   layers:
   - Default
   - TransparentFX

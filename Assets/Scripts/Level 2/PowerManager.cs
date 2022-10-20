@@ -5,8 +5,8 @@ using UnityEngine;
 public class PowerManager : MonoBehaviour
 {
     [Header("Powerable Lights in level")]
-    public GameObject[] Lights;
-    public GameObject[] LightsRunWithoutPower;
+    public List<Light> Lights;
+    public List<Light> LightsRunWithoutPower;
 
     [Header("Info")]
     public bool PowerOn = false;
@@ -16,34 +16,64 @@ public class PowerManager : MonoBehaviour
     private int NumofGen = 0;
     public int GenOn = 0;
 
+    [Header("PowerDoor")]
+    public LockedDoor[] LockDoor;
+
     [Header("O2")]
-    public GameObject o2;
+    public GameObject[] o2;
 
     // Start is called before the first frame update
     void Start()
     {
-        NumofGen = PowerBox.Length + 1;
-        //checking if lights that needs to be on or off
-        if(PowerOn)
+        NumofGen = PowerBox.Length;
+
+        GameObject[] g = GameObject.FindGameObjectsWithTag("PowerAbleLight");
+        foreach (GameObject g2 in g)
         {
-            foreach(GameObject l in Lights)
+            Lights.Add(g2.GetComponent<Light>());
+        }
+        GameObject[] h = GameObject.FindGameObjectsWithTag("NonePowerLight");
+        foreach (GameObject g2 in h)
+        {
+            LightsRunWithoutPower.Add(g2.GetComponent<Light>());
+        }
+
+        if (LockDoor != null)
+        {
+            foreach (LockedDoor l in LockDoor)
             {
-                l.SetActive(true);
+                l.locked = true;
             }
-            foreach(GameObject l in LightsRunWithoutPower)
+        }
+
+        //checking if lights that needs to be on or off
+        if (PowerOn)
+        {
+            foreach(Light l in Lights)
             {
-                l.SetActive(false);
-            }    
+                l.enabled = true;
+            }
+            foreach(Light l in LightsRunWithoutPower)
+            {
+                l.enabled = false;
+            }
+            if (LockDoor != null)
+            {
+                foreach (LockedDoor l in LockDoor)
+                {
+                    l.locked = true;
+                }
+            }
         }
         else
         {
-                foreach (GameObject l in Lights)
+                foreach (Light l in Lights)
                 {
-                    l.SetActive(false);
+                    l.enabled = false;
                 }
-                foreach (GameObject l in LightsRunWithoutPower)
+                foreach (Light l in LightsRunWithoutPower)
                 {
-                    l.SetActive(true);
+                    l.enabled = true;
                 }
             
         }
@@ -52,16 +82,27 @@ public class PowerManager : MonoBehaviour
 
     public void TurnOnTheLights()
     {
-
-        foreach (GameObject l in Lights)
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerOxygen>().isLosingOxygen = false;
+        foreach (Light l in Lights)
         {
-            l.SetActive(true);
+            l.enabled = true;
         }
-        foreach (GameObject l in LightsRunWithoutPower)
+        foreach (Light l in LightsRunWithoutPower)
         {
-            l.SetActive(false);
+            l.enabled = false;
         }
         //destorying this after we finish turning on
+        foreach(GameObject o in o2)
+        {
+            Destroy(o);
+        }
+        if (LockDoor != null)
+        {
+            foreach (LockedDoor l in LockDoor)
+            {
+                l.locked = false;
+            }
+        }
         Destroy(this.gameObject);
     }
     
