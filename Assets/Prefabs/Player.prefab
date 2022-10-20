@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5124662655992260251}
   - component: {fileID: 5124662655992260250}
   - component: {fileID: 5124662655992260325}
-  - component: {fileID: 1581058942458934652}
   - component: {fileID: 5124662655992260324}
   - component: {fileID: 5124662655992260327}
   m_Layer: 0
@@ -89,24 +88,6 @@ MonoBehaviour:
   jamIndicator: {fileID: 0}
   muzzleFlash: {fileID: 6042069127323229149}
   flameStream: {fileID: 5123256928176653037}
---- !u!114 &1581058942458934652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5124662655992260326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 120b45f26bb1f2841900758a218b1995, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oxygenRemaining: 100
-  oxygenMax: 100
-  oxygenLossRate: 5
-  oxygenRefreshRate: 10
-  damageOverTime: 2
-  player: {fileID: 5124662655992260325}
 --- !u!114 &5124662655992260324
 MonoBehaviour:
   m_ObjectHideFlags: 0
