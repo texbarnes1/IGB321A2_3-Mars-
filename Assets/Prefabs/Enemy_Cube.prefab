@@ -56,7 +56,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  health: 750
+  health: 200
   agroRange: 15
   damage: 10
   rotationSpeed: 1
@@ -109,6 +109,7 @@ MonoBehaviour:
   explosion: {fileID: 739467614375616774, guid: c431d54ee92739b4a94e92f96ef3bc7b,
     type: 3}
   armed: 0
+  melee: 1
 --- !u!65 &2414672199757314205
 BoxCollider:
   m_ObjectHideFlags: 0

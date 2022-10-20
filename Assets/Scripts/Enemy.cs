@@ -35,6 +35,9 @@ public class Enemy : MonoBehaviour {
     //Turn off firing for tutorial purposes
     public bool armed = true;
 
+    //set melee true for cubes
+    public bool melee = false;
+
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
@@ -77,7 +80,7 @@ public class Enemy : MonoBehaviour {
                         agent.SetDestination(player.transform.position);
                     }
                     //Stop if close to player
-                    else if (Vector3.Distance(player.transform.position, transform.position) < 5) {
+                    else if (Vector3.Distance(player.transform.position, transform.position) < 5 && melee == false) {
                         agent.SetDestination(transform.position);
                     }
 
