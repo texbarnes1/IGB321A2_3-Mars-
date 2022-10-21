@@ -20,6 +20,10 @@ public class LockedDoor : MonoBehaviour
     void Start()
     {
         Close();
+        if (locked)
+        {
+            openDuration = 0;
+        }
     }
 
     // Update is called once per frame

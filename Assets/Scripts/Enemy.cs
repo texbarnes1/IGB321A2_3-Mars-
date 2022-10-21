@@ -76,11 +76,11 @@ public class Enemy : MonoBehaviour {
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, adjRotSpeed);
 
                     //Move towards player
-                    if (Vector3.Distance(player.transform.position, transform.position) >= 5) {
+                    if (Vector3.Distance(player.transform.position, transform.position) >= 5 || melee == true) {
                         agent.SetDestination(player.transform.position);
                     }
                     //Stop if close to player
-                    else if (Vector3.Distance(player.transform.position, transform.position) < 5 && melee == false) {
+                    else if (Vector3.Distance(player.transform.position, transform.position) < 5) {
                         agent.SetDestination(transform.position);
                     }
 
