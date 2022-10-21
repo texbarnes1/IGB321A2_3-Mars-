@@ -20794,6 +20794,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6713869448462166258, guid: 08e865c706bd263488464593b1255ac2,
         type: 3}
+      propertyPath: openDuration
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6713869448462166258, guid: 08e865c706bd263488464593b1255ac2,
+        type: 3}
       propertyPath: airlockPartner
       value: 
       objectReference: {fileID: 4922913174188074087}
@@ -21077,7 +21082,7 @@ PrefabInstance:
     - target: {fileID: 6713869448462166258, guid: 08e865c706bd263488464593b1255ac2,
         type: 3}
       propertyPath: openDuration
-      value: 0.2
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6713869448462166258, guid: 08e865c706bd263488464593b1255ac2,
         type: 3}

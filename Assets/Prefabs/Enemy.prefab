@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  health: 750
+  health: 600
   agroRange: 15
   damage: 0
   rotationSpeed: 1
@@ -189,6 +189,7 @@ MonoBehaviour:
   explosion: {fileID: 739467614375616774, guid: c431d54ee92739b4a94e92f96ef3bc7b,
     type: 3}
   armed: 1
+  melee: 0
 --- !u!1 &1910493276591460
 GameObject:
   m_ObjectHideFlags: 0
