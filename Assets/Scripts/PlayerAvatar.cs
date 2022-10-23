@@ -114,6 +114,7 @@ public class PlayerAvatar : MonoBehaviour {
 
         if (Input.GetMouseButton(1) && fuel >= 1) {
             if (Time.time > FTFireTimer) {
+                audioManager.Play("FlameThrower");
                 Instantiate(fireDamage, flameStream.transform.position, transform.rotation);
                 fuel -= 1;
                 FTFireTimer = Time.time + FTFireTime;
@@ -220,6 +221,7 @@ public class PlayerAvatar : MonoBehaviour {
         if (jamTime <= 0)
         {
             //Debug.Log("this Triggered");
+            audioManager.Play("Jam");
             isJammed = false;
             bulletsUntilJam = RandomInt();
             jamTime = 4;
