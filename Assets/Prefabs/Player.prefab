@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5124662655992260325}
   - component: {fileID: 5124662655992260324}
   - component: {fileID: 5124662655992260327}
+  - component: {fileID: 1489082813259101495}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -117,6 +118,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &1489082813259101495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124662655992260326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 120b45f26bb1f2841900758a218b1995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oxygenRemaining: 100
+  oxygenMax: 100
+  isLosingOxygen: 0
+  oxygenLossRate: 1
+  oxygenRefreshRate: 10
+  damageOverTime: 2
+  player: {fileID: 5124662655992260325}
 --- !u!1001 &5124662655930504327
 PrefabInstance:
   m_ObjectHideFlags: 0
