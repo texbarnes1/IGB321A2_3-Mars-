@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour {
 
     NavMeshAgent agent;
 
+    private AudioManager audioManager;
+
     public GameObject player;
 
     public float health = 10.0f;
@@ -41,6 +43,8 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         agent = GetComponent<NavMeshAgent>();
+
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -74,6 +78,9 @@ public class Enemy : MonoBehaviour {
                     targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
                     adjRotSpeed = Mathf.Min(rotationSpeed * Time.deltaTime, 1);
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, adjRotSpeed);
+
+                    //audioManager.Play("RobotAlert");
+
 
                     //Move towards player
                     if (Vector3.Distance(player.transform.position, transform.position) >= 5 || melee == true) {
