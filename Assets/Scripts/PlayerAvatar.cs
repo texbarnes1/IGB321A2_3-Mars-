@@ -34,6 +34,8 @@ public class PlayerAvatar : MonoBehaviour {
     public float jamTime;
     public int keyCards = 0;
 
+    private AudioManager audioManager;
+
     // A UI popup that indicates the weapon has jammed
     public GameObject jamIndicator;
 
@@ -48,7 +50,7 @@ public class PlayerAvatar : MonoBehaviour {
         anim = avatar.GetComponent<Animator>();
         flameStream.GetComponent<ParticleSystem>().Stop();
         rb = GetComponent<Rigidbody>();
-
+        audioManager = FindObjectOfType<AudioManager>();
         bulletsUntilJam = RandomInt();
     }
 	
@@ -68,6 +70,7 @@ public class PlayerAvatar : MonoBehaviour {
             muzzleFlash.SetActive(true);
 
             if (Time.time > MGFireTimer) {
+                audioManager.Play("GunShot");
                 Instantiate(bullet, muzzleFlash.transform.position, transform.rotation);
                 bulletsUntilJam -= 1;
                 //ammo -= 1;
