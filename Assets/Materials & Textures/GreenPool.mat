@@ -93,9 +93,9 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.06926417, g: 2, b: 0, a: 1}
+    - _Color: {r: 0.08461173, g: 2.3086915, b: 0, a: 1}
     - _EmissionColor: {r: 0.0024157963, g: 0.616, b: 0, a: 1}
-    - _FlowDirection: {r: 0.2, g: -0.38533, b: 0, a: 0}
+    - _FlowDirection: {r: 0.17688, g: -0.31275, b: 0, a: 0}
     - _FlowDirection1: {r: 0.05, g: 1.65, b: 0.24, a: 1}
     - _FlowDirection2: {r: 0, g: 0.05, b: 0, a: 1}
   m_BuildTextureStacks: []
