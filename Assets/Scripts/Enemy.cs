@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour {
                     adjRotSpeed = Mathf.Min(rotationSpeed * Time.deltaTime, 1);
                     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, adjRotSpeed);
 
-                    audioManager.Play("RobotAlert");
+                    //audioManager.Play("RobotAlert");
 
 
                     //Move towards player
