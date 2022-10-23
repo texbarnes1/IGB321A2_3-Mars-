@@ -25,6 +25,7 @@ public class PowerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         NumofGen = PowerBox.Length;
 
         GameObject[] g = GameObject.FindGameObjectsWithTag("PowerAbleLight");
@@ -82,6 +83,7 @@ public class PowerManager : MonoBehaviour
 
     public void TurnOnTheLights()
     {
+        PowerOn = true;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerOxygen>().isLosingOxygen = false;
         foreach (Light l in Lights)
         {
@@ -103,7 +105,6 @@ public class PowerManager : MonoBehaviour
                 l.locked = false;
             }
         }
-        Destroy(this.gameObject);
     }
     
     public void GenCounterUp()

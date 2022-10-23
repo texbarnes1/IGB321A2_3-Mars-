@@ -28,6 +28,12 @@ public class Generator : MonoBehaviour
     public Light[] Roomlights;
     private PowerManager PowerManager;
 
+    [Header("Audio")]
+    public Level2_dynamicMusic level2Music;
+    public int trackNum;
+    public AudioClip[] tracks;
+    public AudioSource source;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +104,14 @@ public class Generator : MonoBehaviour
     {
         StartCoroutine(SpawnEnemy(t));
         CurrentTime = t;
+
+        if(level2Music != null)
+        {
+            level2Music.section = (Section)trackNum;
+            source.clip = tracks[0];
+            source.Play();
+        }
+
         while (CurrentTime >= 0)
         {
             
@@ -132,6 +146,15 @@ public class Generator : MonoBehaviour
             }
         }
         TimerText.text = "";
+        if (level2Music != null)
+        {
+            level2Music.section = (Section)1;
+            source.Stop();
+            source.volume = 1;
+            source.clip = tracks[1];
+            source.Play();
+
+        }
     }
     private IEnumerator SpawnEnemy(int t)
     {
