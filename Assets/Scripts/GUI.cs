@@ -25,6 +25,10 @@ public class GUI : MonoBehaviour {
     public Slider oxygenbar;
     public GameObject oxygenAlert;
     public CanvasGroup oxygenPopup;
+    public AudioLowPassFilter lowPassFilter;
+    public float lowPassFrequency = 610;
+    public float lowPassResonance = 1.4f;
+
     //Post processing effects
     public PostProcessVolume oxygenAtmosphere;
     public float atmosphereShiftSpeed = 2;
@@ -34,6 +38,17 @@ public class GUI : MonoBehaviour {
     void Start () {
         lensDistort = oxygenAtmosphere.profile.GetSetting<LensDistortion>();
         chromaticAbberation = oxygenAtmosphere.profile.GetSetting<ChromaticAberration>();
+
+        if (Camera.main.GetComponent<AudioLowPassFilter>() == null)
+        {
+            lowPassFilter = Camera.main.gameObject.AddComponent<AudioLowPassFilter>();
+        }
+        else
+        {
+            lowPassFilter = Camera.main.GetComponent<AudioLowPassFilter>();
+        }
+        lowPassFilter.cutoffFrequency = lowPassFrequency;
+        lowPassFilter.lowpassResonanceQ = lowPassResonance;
 
     }
 	
@@ -88,6 +103,7 @@ public class GUI : MonoBehaviour {
     {
         if (player.GetComponent<PlayerOxygen>().isLosingOxygen)
         {
+            lowPassFilter.enabled = true;
             oxygenAlert.SetActive(true);
 
             if (player.GetComponent<PlayerOxygen>().OxygenRemaining >= 95)
@@ -101,6 +117,7 @@ public class GUI : MonoBehaviour {
         }
         else
         {
+            lowPassFilter.enabled = false;
             oxygenAlert.SetActive(false);
 
             //Edit Post Processing to give a low oxygen effect
