@@ -1641,7 +1641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9cd8a5cd5373ad4da6b14b5f2ce1323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuel: 15
+  fuel: 25
 --- !u!1 &8963610533032892841
 GameObject:
   m_ObjectHideFlags: 0

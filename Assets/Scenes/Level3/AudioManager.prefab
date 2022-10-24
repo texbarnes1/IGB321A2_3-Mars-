@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6289593866392517215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6289593866392517213}
+  - component: {fileID: 6289593866392517212}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6289593866392517213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289593866392517215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 94.3404, y: 42.511635, z: -295.96796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6289593866392517212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289593866392517215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 150cdb52fbbbf3f4992f8c8f97bf4cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Music
+    clip: {fileID: 8300000, guid: 5decc9eb51321d04e9205edf6de59814, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: GunShot
+    clip: {fileID: 8300000, guid: 95a1b731aafed10469edc716cdb93404, type: 3}
+    volume: 1
+    pitch: 0.45
+    loop: 0
+    source: {fileID: 0}
+  - name: RobotAlert
+    clip: {fileID: 8300000, guid: 3df574ec034d21f4b9a64b25fe5c9481, type: 3}
+    volume: 1
+    pitch: 0.45
+    loop: 0
+    source: {fileID: 0}
+  - name: FlameThrower
+    clip: {fileID: 8300000, guid: f12670746e2fab74181ef37cf1fadb23, type: 3}
+    volume: 1
+    pitch: 0.45
+    loop: 0
+    source: {fileID: 0}
+  - name: Jam
+    clip: {fileID: 8300000, guid: ca4dc71210fe18241a04c758176e1cc3, type: 3}
+    volume: 1
+    pitch: 0.45
+    loop: 0
+    source: {fileID: 0}
