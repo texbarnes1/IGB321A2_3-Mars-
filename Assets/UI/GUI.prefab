@@ -1994,6 +1994,9 @@ MonoBehaviour:
   oxygenbar: {fileID: 782667597139444864}
   oxygenAlert: {fileID: 782667596508725735}
   oxygenPopup: {fileID: 782667596093457649}
+  lowPassFilter: {fileID: 0}
+  lowPassFrequency: 610
+  lowPassResonance: 1.4
   oxygenAtmosphere: {fileID: 782667596321294826}
   atmosphereShiftSpeed: 2
 --- !u!1 &782667597504386210
@@ -2252,6 +2255,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.47607422
       objectReference: {fileID: 0}
+    - target: {fileID: 8176581041497503326, guid: 4a7009b64e2f65e46b3140855565b866,
+        type: 3}
+      propertyPath: m_text
+      value: Main Menu
+      objectReference: {fileID: 0}
     - target: {fileID: 8176581041785965990, guid: 4a7009b64e2f65e46b3140855565b866,
         type: 3}
       propertyPath: m_Name
@@ -2371,6 +2379,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -138.80377
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176581042103736539, guid: 4a7009b64e2f65e46b3140855565b866,
+        type: 3}
+      propertyPath: m_Name
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176581042103736541, guid: 4a7009b64e2f65e46b3140855565b866,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176581042103736541, guid: 4a7009b64e2f65e46b3140855565b866,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176581042103736541, guid: 4a7009b64e2f65e46b3140855565b866,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 8176581042392254765, guid: 4a7009b64e2f65e46b3140855565b866,
         type: 3}
