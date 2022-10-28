@@ -7,7 +7,7 @@ public class Laser : Projectile {
     public override void OnTriggerEnter(Collider otherObject) {
 
         if (otherObject.tag == "Player") {
-            otherObject.GetComponent<PlayerAvatar>().takeDamage(damage);
+            otherObject.GetComponent<PlayerAvatar>().TakeDamage(damage);
             //Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }

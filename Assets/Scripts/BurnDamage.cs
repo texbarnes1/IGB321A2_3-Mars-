@@ -22,7 +22,7 @@ public class BurnDamage : MonoBehaviour {
         if (Time.time > damageTimer) {
             foreach (Transform target in burnTargets) {
                 if (target != null)
-                    target.GetComponent<Enemy>().takeDamage(damage);
+                    target.GetComponent<Enemy>().TakeDamage(damage);
             }
             damageTimer = Time.time + damageTime;
         }

@@ -7,7 +7,13 @@ public class Bullet : Projectile {
     public override void OnTriggerEnter(Collider otherObject) {
 
         if (otherObject.tag == "Enemy") { 
-            otherObject.GetComponent<Enemy>().takeDamage(damage);
+            otherObject.GetComponent<Enemy>().TakeDamage(damage);
+            Instantiate(hitEffect, transform.position, transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else if (otherObject.CompareTag("Boss"))
+        {
+            otherObject.GetComponent<Boss>().TakeDamage(damage);
             Instantiate(hitEffect, transform.position, transform.rotation);
             Destroy(this.gameObject);
         }

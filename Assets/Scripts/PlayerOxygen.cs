@@ -29,7 +29,7 @@ public class PlayerOxygen : MonoBehaviour
             if (oxygenRemaining <= 0)
             {
                 oxygenRemaining = 0;
-                player.takeDamage(damageOverTime * Time.deltaTime);
+                player.TakeDamage(damageOverTime * Time.deltaTime);
                 //Debug.Log("Ran out of oxygen", this);
             }
             else

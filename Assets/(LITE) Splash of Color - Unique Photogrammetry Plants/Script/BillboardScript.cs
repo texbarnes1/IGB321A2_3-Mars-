@@ -6,12 +6,12 @@ public class BillboardScript : MonoBehaviour
 {
     [Tooltip("Locks the rotational up axis of the billboard.")]
     public bool lockUpAxis = true;
-    private Camera camera;
+    private Camera cam;
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        cam = Camera.main;
     }
 
     // Update is called once per frame
@@ -19,10 +19,10 @@ public class BillboardScript : MonoBehaviour
     {
         if (lockUpAxis)
         {
-            gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, camera.transform.eulerAngles.y + 180, gameObject.transform.eulerAngles.z);
+            gameObject.transform.eulerAngles = new Vector3(gameObject.transform.eulerAngles.x, cam.transform.eulerAngles.y + 180, gameObject.transform.eulerAngles.z);
         }
         else {
-            gameObject.transform.LookAt(camera.transform.position);
+            gameObject.transform.LookAt(cam.transform.position);
         }
     }
 }

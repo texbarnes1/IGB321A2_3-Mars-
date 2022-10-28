@@ -105,12 +105,12 @@ public class Enemy : MonoBehaviour {
     private void OnCollisionStay(Collision collision) {
 
         if (collision.transform.tag == "Player" && Time.time > damageTimer) {
-            collision.transform.GetComponent<PlayerAvatar>().takeDamage(damage);
+            collision.transform.GetComponent<PlayerAvatar>().TakeDamage(damage);
             damageTimer = Time.time + damageTime;
         }
     }
 
-    public void takeDamage(float thisDamage) {
+    public void TakeDamage(float thisDamage) {
 
         health -= thisDamage;
     }
