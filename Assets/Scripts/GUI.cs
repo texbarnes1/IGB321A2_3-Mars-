@@ -93,10 +93,7 @@ public class GUI : MonoBehaviour {
                 StartCoroutine(GameManager.instance.LoadLevel(GameManager.instance.thisLevel));
                 levelCompleteText.SetActive(true);
             }
-
         }
-
-
     }
 
     public void OxygenEffects()

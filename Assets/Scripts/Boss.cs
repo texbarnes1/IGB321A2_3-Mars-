@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Boss : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private GameObject explosion;
     [SerializeField] private Transform spawnersParent;
     private List<Transform> spawners = new List<Transform>();
-    [SerializeField] private Transform muzzle;
+    //[SerializeField] private Transform muzzle;
 
     private GameObject player;
 
@@ -25,8 +26,8 @@ public class Boss : MonoBehaviour
     private float spawnTimer;
     [SerializeField] private float spawnTime = 2f;
 
-    private float shootTimer;
-    [SerializeField] private float shootTime = 2.5f;
+    //private float shootTimer;
+    //[SerializeField] private float shootTime = 2.5f;
 
     private bool isAggro = false;
 
@@ -43,12 +44,12 @@ public class Boss : MonoBehaviour
     private void Update()
     {
         LookAtPlayer();
-        //Debug.Log(isAggro);
+        
         if (isAggro) SpawnSmallEnemies();
 
         RotateSpawners();
 
-        if (isAggro) Shoot();
+        //if (isAggro) Shoot();
 
         //Kill check - moved from takeDamage due to bug
         if (health <= 0)
@@ -116,7 +117,7 @@ public class Boss : MonoBehaviour
                 {
                     child = Instantiate(smallEnemyPrefab, transform.position, transform.rotation);
                 }
-                children.Add(child.GetComponent<Enemy>()); 
+                children.Add(child.GetComponent<Enemy>());
             }
             spawnTimer = Time.time + spawnTime;
         }
@@ -134,20 +135,20 @@ public class Boss : MonoBehaviour
 
     private void RotateSpawners()
     {
-        spawnersParent.Rotate(spawnersParent.position, 2f * Time.deltaTime);
+        spawnersParent.Rotate(new Vector3(0, 1, 0), 2f * Time.deltaTime);
     }
 
-    private void Shoot()
-    {
-        //Fire 'weapon'
-        if (Time.time > shootTimer)
-        {
+    //private void Shoot()
+    //{
+    //    //Fire 'weapon'
+    //    if (Time.time > shootTimer)
+    //    {
 
-            GameObject child = Instantiate(smallEnemyPrefab, muzzle.position, muzzle.rotation);
-            children.Add(child.GetComponent<Enemy>());
-            shootTimer = Time.time + shootTime;
-        }
-    }
+    //        GameObject child = Instantiate(smallEnemyPrefab, muzzle.position, muzzle.rotation);
+    //        children.Add(child.GetComponent<Enemy>());
+    //        shootTimer = Time.time + shootTime;
+    //    }
+    //}
 
     private void OnCollisionStay(Collision collision)
     {
