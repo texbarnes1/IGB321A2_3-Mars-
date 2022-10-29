@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField] private float health = 10000f;
+    [SerializeField] public float health = 10000f;
     [SerializeField] private float agroRange = 10.0f;
     [SerializeField] private float damage = 5.0f;
     [SerializeField] private float rotationSpeed;
     
     [SerializeField] private GameObject smallEnemyPrefab;
+    [SerializeField] private GameObject largeEnemyPrefab;
+    [SerializeField] private GameObject dronepPrefab;
     [SerializeField] private GameObject explosion;
     [SerializeField] private Transform spawnersParent;
     private List<Transform> spawners = new List<Transform>();
@@ -28,6 +30,8 @@ public class Boss : MonoBehaviour
 
     private bool isAggro = false;
 
+    private int stage = 1;
+    private List<Enemy> children = new List<Enemy>(); //an array to hold all children so they explode with the boss
     private void Start()
     {
         foreach (Transform transform in spawnersParent)
@@ -39,7 +43,7 @@ public class Boss : MonoBehaviour
     private void Update()
     {
         LookAtPlayer();
-        Debug.Log(isAggro);
+        //Debug.Log(isAggro);
         if (isAggro) SpawnSmallEnemies();
 
         RotateSpawners();
@@ -50,7 +54,22 @@ public class Boss : MonoBehaviour
         if (health <= 0)
         {
             Instantiate(explosion, transform.position, transform.rotation);
+            foreach (Enemy enemy in children)
+            {
+                enemy.health = 0;
+            }
+            GameManager.instance.levelComplete = true;
             Destroy(gameObject);
+        }
+        else if (health < 4000 && stage == 1)
+        {
+            SpawnDrones(1);
+            stage = 2;
+        }
+        else if (health < 1000 && stage == 2)
+        {
+            SpawnDrones(2);
+            stage = 3;
         }
     }
 
@@ -84,13 +103,32 @@ public class Boss : MonoBehaviour
 
     private void SpawnSmallEnemies()
     {
+        GameObject child;
         if (Time.time > spawnTimer)
         {
             foreach (Transform transform in spawners)
             {
-                Instantiate(smallEnemyPrefab, transform.position, transform.rotation);
+                if (Random.Range(1,6) == 1) //1 in 6 chance to spawn larger enemy
+                {
+                    child = Instantiate(largeEnemyPrefab, transform.position, transform.rotation);
+                }
+                else
+                {
+                    child = Instantiate(smallEnemyPrefab, transform.position, transform.rotation);
+                }
+                children.Add(child.GetComponent<Enemy>()); 
             }
             spawnTimer = Time.time + spawnTime;
+        }
+    }
+    private void SpawnDrones(int count)
+    {
+        GameObject child;
+        for (int i = 1; i <= count; i++)
+        {
+            Transform transform = spawners[Random.Range(0, spawners.Count)];
+            child = Instantiate(dronepPrefab, transform.position, transform.rotation);
+            children.Add(child.GetComponent<Enemy>());
         }
     }
 
@@ -104,7 +142,9 @@ public class Boss : MonoBehaviour
         //Fire 'weapon'
         if (Time.time > shootTimer)
         {
-            Instantiate(smallEnemyPrefab, muzzle.position, muzzle.rotation);
+
+            GameObject child = Instantiate(smallEnemyPrefab, muzzle.position, muzzle.rotation);
+            children.Add(child.GetComponent<Enemy>());
             shootTimer = Time.time + shootTime;
         }
     }

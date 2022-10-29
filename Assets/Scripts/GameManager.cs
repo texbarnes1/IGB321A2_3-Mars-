@@ -48,6 +48,14 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene(level);
         //print(level);
     }
+    public IEnumerator LoadNextLevel(string level)
+    {
+
+        yield return new WaitForSecondsRealtime(5);
+
+        SceneManager.LoadScene(level);
+        //print(level);
+    }
 
 
 }

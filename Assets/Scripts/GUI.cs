@@ -71,12 +71,12 @@ public class GUI : MonoBehaviour {
         //Level Transition
         if (GameManager.instance.levelComplete)
         {
-            screenFade.color = Color.Lerp(screenFade.color, Color.black, fadeSpeed * Time.unscaledDeltaTime);
+            screenFade.color = Color.Lerp(screenFade.color, Color.black, fadeSpeed / 1.25f * Time.unscaledDeltaTime);
             screenOverlays.alpha = Mathf.Lerp(screenOverlays.alpha, 0, fadeSpeed * 2 * Time.unscaledDeltaTime);
 
             if (levelCompleteText.activeInHierarchy == false) // Load the next Level
             {
-                StartCoroutine(GameManager.instance.LoadLevel(nextLevel));
+                StartCoroutine(GameManager.instance.LoadNextLevel(nextLevel));
                 levelCompleteText.SetActive(true);
             }
             

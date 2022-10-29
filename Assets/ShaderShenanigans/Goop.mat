@@ -49,7 +49,7 @@ Material:
     - _Edge_Intensity: 26.5
     - _Emmission_Intensity: 1.31
     - _Float: 0.05
-    - _Scroll_Speed: 0.53
+    - _Scroll_Speed: 0.1
     m_Colors:
     - _Edge_Colour: {r: 0.10617692, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
