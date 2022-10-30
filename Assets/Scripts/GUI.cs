@@ -76,6 +76,8 @@ public class GUI : MonoBehaviour {
 
             if (levelCompleteText.activeInHierarchy == false) // Load the next Level
             {
+                print("what");
+                CheckpointControl.Checkpoint = Vector3.zero;
                 StartCoroutine(GameManager.instance.LoadNextLevel(nextLevel));
                 levelCompleteText.SetActive(true);
             }

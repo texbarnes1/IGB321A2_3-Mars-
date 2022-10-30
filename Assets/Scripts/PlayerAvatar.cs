@@ -23,7 +23,7 @@ public class PlayerAvatar : MonoBehaviour {
     public int ammo = 500;
 
     public GameObject fireDamage;
-    private float FTFireTime = 0.2f;
+    private float FTFireTime = 0.35f;
     private float FTFireTimer;
     public int fuel = 50;
 
@@ -53,6 +53,12 @@ public class PlayerAvatar : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         audioManager = FindObjectOfType<AudioManager>();
         bulletsUntilJam = RandomInt();
+
+
+        if (CheckpointControl.Checkpoint != Vector3.zero)
+        {
+            transform.position = CheckpointControl.Checkpoint;
+        }
     }
 	
 	// Update is called once per frame

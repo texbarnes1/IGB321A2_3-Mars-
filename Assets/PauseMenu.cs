@@ -67,6 +67,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SelectLevel(string level)
     {
+        CheckpointControl.Checkpoint = Vector3.zero;
         black.SetActive(true);
         SceneManager.LoadScene(level);
     }
